@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<input type="color" id="c"/>
+
+
+<script>
+    function hexToRgb(hex) {
+        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? {
+            r: parseInt(result[1], 16),
+            g: parseInt(result[2], 16),
+            b: parseInt(result[3], 16)
+        } : null;
+    }
+
+    function sendValue(e) {
+        var color = document.getElementById('c').value;
+
+        var rgb = hexToRgb(color);
+
+        var request = new XMLHttpRequest();
+        request.open('POST', '/set_form', true);
+        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+        request.send("r=" + rgb.r + "&g=" + rgb.g + "&b=" + rgb.b);
+    }
+
+    c.addEventListener('change', sendValue, false);
+</script>
+
+</body>
+</html>

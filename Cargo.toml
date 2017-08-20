@@ -1,0 +1,12 @@
+[package]
+name = "led_server"
+version = "0.1.0"
+authors = ["pi"]
+
+[dependencies]
+iron = "*"
+router = "*"
+hyper = "*"
+rustc-serialize = "*"
+libc = "0.2.29"
+rpi_ws281x = {git = "https://github.com/tech2077/rpi_ws281x-rs"}
